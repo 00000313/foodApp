@@ -86,6 +86,9 @@ app.use(cors());
 
 // Define Express routes
 try {
+  app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
+});
   app.use("/api/v1/auth", require("./Routes/authRoute"));
   app.use("/api/v1/test", require("./Routes/testRoutes"));
   app.use("/api/v1/user", require("./Routes/userRoutes"));
