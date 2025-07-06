@@ -9,8 +9,8 @@ const startGrpcServer = require('./grpc/server');
 // const grpc = require('@grpc/grpc-js');
 // const protoLoader = require('@grpc/proto-loader');
 
-const { connectDB } = require("./config/db");
 dotenv.config();
+const { connectDB } = require("./config/db");
 
 // Connect to MongoDB
 connectDB();
@@ -87,7 +87,7 @@ app.use(cors());
 // Define Express routes
 try {
   app.get('/healthz', (req, res) => {
-  res.status(200).send('OK');
+  res.status(200).send('Continuous deplyement updated');
 });
   app.use("/api/v1/auth", require("./Routes/authRoute"));
   app.use("/api/v1/test", require("./Routes/testRoutes"));
