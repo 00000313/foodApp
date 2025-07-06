@@ -87,7 +87,7 @@ app.use(cors());
 // Define Express routes
 try {
   app.get('/healthz', (req, res) => {
-  res.status(200).send('Continuous deplyement updated');
+  res.status(200).send('Continuous deplyement working');
 });
   app.use("/api/v1/auth", require("./Routes/authRoute"));
   app.use("/api/v1/test", require("./Routes/testRoutes"));
