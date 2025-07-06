@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package restaurant;
+
+service RestaurantService {
+  rpc CreateRestaurant (CreateRestaurantRequest) returns (RestaurantResponse);
+  rpc GetAllRestaurants (EmptyRequest) returns (GetAllRestaurantsResponse);
+  rpc GetRestaurantById (GetRestaurantByIdRequest) returns (RestaurantResponse);
+  rpc DeleteRestaurant (DeleteRestaurantRequest) returns (DeleteRestaurantResponse);
+}
+
+// Request to create a restaurant
+message CreateRestaurantRequest {
+  string title = 1;
+  string imageUrl = 2;
+  repeated string foods = 3;
+  string time = 4;
+  bool pickup = 5;
+  bool delivery = 6;
+  bool isOpen = 7;
+  string logoUrl = 8;
+  float rating = 9;
+  int32 ratingCount = 10;
+  string code = 11;
+  Coords coords = 12;
+}
+
+// Coordinates message
+message Coords {
+  string id = 1;
+  float latitude = 2;
+  float latitudeDelta = 3;
+  float longitude = 4;
+  float longitudeDelta = 5;
+  string address = 6;
+  string title = 7;
+}
+
+// Response for restaurant data
+message RestaurantResponse {
+  string id = 1;
+  string title = 2;
+  string imageUrl = 3;
+  repeated string foods = 4;
+  string time = 5;
+  bool pickup = 6;
+  bool delivery = 7;
+  bool isOpen = 8;
+  string logoUrl = 9;
+  float rating = 10;
+  int32 ratingCount = 11;
+  string code = 12;
+  Coords coords = 13;
+  bool success = 14;
+  string message = 15;
+}
+
+// Request to get restaurant by ID
+message GetRestaurantByIdRequest {
+  string id = 1;
+}
+
+// Response to get all restaurants
+message GetAllRestaurantsResponse {
+  repeated RestaurantResponse restaurants = 1;
+  bool success = 2;
+  string message = 3;
+}
+
+// Request to delete a restaurant by ID
+message DeleteRestaurantRequest {
+  string id = 1;
+}
+
+// Response to deleting a restaurant
+message DeleteRestaurantResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Empty request message for methods that don't need parameters
+message EmptyRequest {}

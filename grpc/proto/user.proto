@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+service UserService {
+  rpc getUserGrpc (userId) returns (User);
+  rpc registerUser(registerUserReq) returns (registerUserRes);
+}
+
+message userId {
+ string id = 1;
+}
+
+message User {
+  string id = 1;
+  string userName = 2;
+  string email = 3;
+  string Address=4;
+  string Phone = 5;
+  string userType = 6;
+  string profile =7;
+  string answer = 8;
+}
+
+message registerUserReq {
+ string userName=1;
+ string Phone=2;
+ string email=3;
+ string Password=4;
+ string Address=5;
+ string answer=6;
+}
+
+message registerUserRes {
+    bool success = 1;
+    string message = 2;
+    CreatedUser user = 3; // Include the User message
+}
+
+message CreatedUser {
+    string userName = 1;
+    string email = 2;
+    string password = 3; // Typically, you wouldn't return this; consider removing it
+    string address = 4; // Corrected from "Address"
+    string phone = 5;
+    string userType = 6;
+    string profile = 7;
+    string answer = 8;
+    string id = 9; // Use 'id' instead of '_id' to follow convention
+    string createdAt = 10;
+    string updatedAt = 11;
+}
