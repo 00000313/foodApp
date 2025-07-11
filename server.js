@@ -87,7 +87,7 @@ app.use(cors());
 // Define Express routes
 try {
   app.get('/healthz', (req, res) => {
-  res.status(200).send('Continuous Integration added');
+  res.status(200).send('Continuous Integration added successfully');
 });
   app.use("/api/v1/auth", require("./Routes/authRoute"));
   app.use("/api/v1/test", require("./Routes/testRoutes"));
