@@ -1,16 +1,15 @@
-
- name:Personnel Project CI
+name: Personnel Project CI
 
 on:
   push:
-    branches:[master]
-    pull_request:
+    branches: [master]
+  pull_request:
 
-    jobs:
+jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-     steps:
+    steps:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v3
 
@@ -19,10 +18,8 @@ on:
         with:
           node-version: '20'
 
-     - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm ci || npm install
 
-
-
-          - name: List project files
+      - name: 📂 List project files
         run: ls -la
